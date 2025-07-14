@@ -526,7 +526,7 @@ function App() {
   )
 
   // Página de Tutoriais
-  const TutorialsPage = () => (
+   const TutorialsPage = () => (
     <div className="space-y-8">
       <div className="text-center space-y-4">
         <h2 className="text-3xl font-bold gradient-text">
@@ -575,15 +575,14 @@ function App() {
   )
 
   // Página de Configurações
-  const ConfigurationsPage = () => (
+ const ConfigurationsPage = () => (
     <div className="space-y-8">
       <div className="text-center space-y-4">
         <h2 className="text-3xl font-bold gradient-text">
           {t.exclusiveConfigurations}
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto" >
-  {t.followToUnlockConfigurations}
-</p>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          {t.followToUnlockConfigs}
         </p>
       </div>
       
