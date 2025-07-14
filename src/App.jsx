@@ -151,15 +151,15 @@ Alguns textos ou diários abaixo, para quem quiser entender tudo melhor`
     tiktokSubSubtitle: "TikTok live subscribers",
     youtubeAgricultureSubtitle: "My work and personal development",
     exclusiveConfigurations: "Exclusive Configurations",
-    followToUnlockConfigs:"Follow me on Instagram to unlock my exclusive Call of Duty Mobile tutorials! " +
-  "𝙉𝙊𝙏𝙀: 𝙄𝙛 𝙮𝙤𝙪 𝙖𝙧𝙚 𝙪𝙨𝙞𝙣𝙜 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙘𝙠 𝙊𝙥𝙚𝙣 𝙞𝙣 𝘽𝙧𝙤𝙬𝙨𝙚𝙧",
+    followToUnlockConfigs:`Follow me on Instagram to unlock my exclusive Call of Duty Mobile tutorials!
+  𝙉𝙊𝙏𝙀: 𝙄𝙛 𝙮𝙤𝙪 𝙖𝙧𝙚 𝙪𝙨𝙞𝙣𝙜 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙘𝙠 𝙊𝙥𝙚𝙣 𝙞𝙣 𝘽𝙧𝙤𝙬𝙨𝙚𝙧`,
 
     myConfigurations: "My Configurations",
     configTikTok: "on TikTok",
     configYouTube: "on YouTube",
     exclusiveTutorials: "Exclusive Tutorials",
-    followToUnlockTutorials:"Follow me on Instagram to unlock my exclusive Call of Duty Mobile tutorials! " +
-  "𝙉𝙊𝙏𝙀: 𝙄𝙛 𝙮𝙤𝙪 𝙖𝙧𝙚 𝙪𝙨𝙞𝙣𝙜 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙘𝙠 𝙊𝙥𝙚𝙣 𝙞𝙣 𝘽𝙧𝙤𝙬𝙨𝙚𝙧",
+    followToUnlockTutorials:`Follow me on Instagram to unlock my exclusive Call of Duty Mobile tutorials!
+  𝙉𝙊𝙏𝙀: 𝙄𝙛 𝙮𝙤𝙪 𝙖𝙧𝙚 𝙪𝙨𝙞𝙣𝙜 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙘𝙠 𝙊𝙥𝙚𝙣 𝙞𝙣 𝘽𝙧𝙤𝙬𝙨𝙚𝙧`,
     myTutorials: "My Tutorials",
     tutorialTikTok: "on TikTok",
     tutorialYouTube: "on YouTube",
