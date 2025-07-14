@@ -52,7 +52,7 @@ const translations = {
     pixDirect: "PIX DIRETO",
     pixDirectSubtitle: "Caso seja sua preferência, você poderá mandar diretamente pelo pix",
     pixKey: "Chave: b23a8dc0-c540-4d9b-8aaa-d91800bdb434",
-    vakinhaDream: "💸 𝐃𝐨𝐞 𝐩𝐚𝐫𝐚 𝐚 𝐦𝐢𝐧𝐡𝐚 𝐯𝐚𝐤𝐢𝐧𝐡𝐚 𝐞 𝐚𝐣𝐮𝐝𝐞 𝐨 𝐦𝐞𝐮 𝐬𝐨𝐧𝐡𝐨",
+    vakinhaDream: "💸 𝐃𝐨𝐞 𝐩𝐚𝐫𝐚 𝐚 𝐦𝐢𝐧𝐡𝐚 𝐯𝐚𝐤𝐢𝐧𝐡𝐚 𝐞 𝐦𝐞𝐮 𝐬𝐨𝐧𝐡𝐨",
     livepixVakinha: "💸 𝐌𝐢𝐧𝐡𝐚 𝐯𝐚𝐪𝐮𝐢𝐧𝐡𝐚 𝐝𝐨 𝐥𝐢𝐯𝐞𝐩𝐢𝐱",
     livepixVakinhaSubtitle: "𝐴𝑞𝑢𝑖 𝑡𝑒𝑚 𝑎𝑠 𝑚𝑒𝑡𝑎𝑠 (𝑜𝑛𝑑𝑒 𝑜 𝑑𝑖𝑛ℎ𝑒𝑖𝑟𝑜 𝑣𝑎𝑖 𝑠𝑒𝑟 𝑢𝑠𝑎𝑑𝑜), 𝑐𝑎𝑠𝑜 𝑐𝑜𝑛𝑓𝑖𝑒 𝑚𝑎𝑖𝑠 𝑛𝑒𝑠𝑠𝑎 𝑝𝑙𝑎𝑡𝑎𝑓𝑜𝑟𝑚𝑎",
     precisionTitle: "100% de Precisão",
@@ -298,7 +298,7 @@ function App() {
           <CardContent className="text-center">
             <Button 
               className="w-full max-w-md mx-auto min-h-[80px] px-6 py-4 text-lg font-bold bg-green-800 hover:bg-green-900 text-white button-animation"
-              onClick={() => window.open('https://www.vakinha.com.br/vaquinha/da-enxada-ao-call-of-duty-mobile', '_blank')}            >
+              onClick={() => window.open('https://vakinha.bio/5344505', '_blank')}            >
               <div className="text-center leading-tight">
                 <div>{t.donateQuick}</div>
                 <div>{t.vakinhaWord}</div>
@@ -428,7 +428,7 @@ function App() {
         <Card className="card-shadow hover-lift">
           <CardContent className="text-center space-y-4">
             <Youtube className="h-12 w-12 mx-auto text-red-500" />
-            <h3 className="text-xl font-bold">YouTube</h3>
+            <h3 className="text-xl font-bold">YouTube SLX</h3>
             <p className="text-sm text-muted-foreground">{t.youtubeSubtitle}</p>
             <Button 
               className="w-full bg-red-600 hover:bg-red-700 text-white"
@@ -442,7 +442,7 @@ function App() {
         <Card className="card-shadow hover-lift">
           <CardContent className="text-center space-y-4">
             <Youtube className="h-12 w-12 mx-auto text-green-500" />
-            <h3 className="text-xl font-bold">YouTube Agricultura</h3>
+            <h3 className="text-xl font-bold">YouTube Agricultura SLNX</h3>
             <p className="text-sm text-muted-foreground">{t.youtubeAgricultureSubtitle}</p>
             <Button 
               className="w-full bg-green-600 hover:bg-green-700 text-white"
@@ -500,7 +500,7 @@ function App() {
               className="w-full bg-teal-600 hover:bg-teal-700 text-white"
               onClick={() => window.open('https://vm.tiktok.com/ZMSs91c6U/', '_blank')}
             >
-              {language === 'pt' ? 'Seguir' : 'Follow'}
+              {language === 'pt' ? 'Inscrever' : 'Subscribe'}
             </Button>
           </CardContent>
         </Card>
