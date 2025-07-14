@@ -533,7 +533,7 @@ function App() {
           {t.exclusiveTutorials}
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-         {t.followToUnlockConfigsEN}
+          {t.followToUnlockTutorials} 
         </p>
       </div>
       
@@ -582,7 +582,7 @@ function App() {
           {t.exclusiveConfigurations}
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          <p style={{ whiteSpace: 'pre-line' }}>{t.followToUnlockConfigs}</p>
+           {t.followToUnlockConfigurations}
         </p>
       </div>
       
