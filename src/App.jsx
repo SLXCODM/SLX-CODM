@@ -564,7 +564,7 @@ function App() {
             <p className="text-lg text-primary font-semibold">{t.tutorialYouTube}</p>
             <Button 
               className="w-full bg-red-600 hover:bg-red-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/4s75G', '_blank')}
+              onClick={() => window.open('https://sub4unlock.io/jnf7Q', '_blank')}
             >
               {language === 'pt' ? 'Acessar Tutoriais' : 'Access Tutorials'}
             </Button>
