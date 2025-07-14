@@ -380,7 +380,7 @@ function App() {
         <Card className="card-shadow">
           <CardContent className="text-center">
             <Button 
-              className="w-full max-w-md mx-auto bg-gradient-to-r from-purple-500 to-navyblue-500 hover:from-purple-600 hover:to-navyblue-600 text-white"
+              className="w-full max-w-md mx-auto bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white"
               onClick={() => window.open('https://donate.stripe.com/8wM3dn7Ne4493QY8ww', '_blank')}
             >
               {t.feedGamer}
