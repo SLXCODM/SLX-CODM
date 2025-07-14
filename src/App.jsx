@@ -63,7 +63,7 @@ const translations = {
     tiktokSubSubtitle: "TikTok live inscrições",
     youtubeAgricultureSubtitle: "Meu trabalho e desenvolvimento pessoal",
     exclusiveConfigurations: "Configurações Exclusivas",
-    followToUnlockConfigs: "Siga no Instagram para desbloquear minhas configurações exclusivas do Call of Duty Mobile!\n𝙉𝙊𝙏𝘼: 𝙎𝙚 𝙚𝙨𝙩𝙞𝙫𝙚𝙧 𝙪𝙨𝙖𝙣𝙙𝙤 𝙤 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙦𝙪𝙚 𝙚𝙢 𝘼𝙗𝙧𝙞𝙧 𝙣𝙤 𝙉𝙖𝙫𝙚𝙜𝙖𝙙𝙤𝙧",
+    followToUnlockConfigs: "Siga no Instagram para desbloquear minhas configurações exclusivas do Call of Duty Mobile!<br /> <br />𝙉𝙊𝙏𝘼: 𝙎𝙚 𝙚𝙨𝙩𝙞𝙫𝙚𝙧 𝙪𝙨𝙖𝙣𝙙𝙤 𝙤 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙦𝙪𝙚 𝙚𝙢 𝘼𝙗𝙧𝙞𝙧 𝙣𝙤 𝙉𝙖𝙫𝙚𝙜𝙖𝙙𝙤𝙧",
     myConfigurations: "Minhas Configurações",
     configTikTok: "no TikTok",
     configYouTube: "no YouTube",
