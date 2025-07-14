@@ -154,7 +154,7 @@ Alguns textos ou diários abaixo, para quem quiser entender tudo melhor`
     configTikTok: "on TikTok",
     configYouTube: "on YouTube",
     exclusiveTutorials: "Exclusive Tutorials",
-    followToUnlockTutorials: "Follow me on Instagram to unlock my exclusive Call of Duty Mobile settings!\n\n𝙉𝙊𝙏𝙀: 𝙄𝙛 𝙮𝙤𝙪 𝙖𝙧𝙚 𝙪𝙨𝙞𝙣𝙜 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙘𝙠 𝙊𝙥𝙚𝙣 𝙞𝙣 𝘽𝙧𝙤𝙬𝙨𝙚𝙧",
+    followToUnlockTutorials: "Follow me on Instagram to unlock my exclusive Call of Duty Mobile settings!\n𝙉𝙊𝙏𝙀: 𝙄𝙛 𝙮𝙤𝙪 𝙖𝙧𝙚 𝙪𝙨𝙞𝙣𝙜 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙘𝙠 𝙊𝙥𝙚𝙣 𝙞𝙣 𝘽𝙧𝙤𝙬𝙨𝙚𝙧",
     myTutorials: "My Tutorials",
     tutorialTikTok: "on TikTok",
     tutorialYouTube: "on YouTube",
@@ -581,8 +581,9 @@ function App() {
         <h2 className="text-3xl font-bold gradient-text">
           {t.exclusiveConfigurations}
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-           {t.followToUnlockConfigurations}
+        <p className="text-muted-foreground max-w-2xl mx-auto" style={{ whiteSpace: 'pre-line' }}>
+  {t.followToUnlockConfigurations}
+</p>
         </p>
       </div>
       
