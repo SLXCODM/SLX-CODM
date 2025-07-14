@@ -533,7 +533,7 @@ function App() {
           {t.exclusiveTutorials}
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          {t.followToUnlockTutorials} 
+          {t.followToUnlockTutorials}
         </p>
       </div>
       
@@ -581,7 +581,7 @@ function App() {
         <h2 className="text-3xl font-bold gradient-text">
           {t.exclusiveConfigurations}
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto" style={{ whiteSpace: 'pre-line' }}>
+        <p className="text-muted-foreground max-w-2xl mx-auto" >
   {t.followToUnlockConfigurations}
 </p>
         </p>
