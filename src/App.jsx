@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState } from 'react'
 import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings } from 'lucide-react'
 import livepixQR from './assets/livepxx.png'
@@ -680,6 +681,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SpeedInsights />
       {/* Header com navegação */}
       <header className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-4 py-4">
