@@ -363,7 +363,7 @@ function App() {
         <Card className="card-shadow">
           <CardContent className="text-center space-y-2">
             <Button 
-              className="w-full max-w-md mx-auto bg-purple-600 hover:bg-purple-700 text-white"
+              className="w-full max-w-md mx-auto bg-blue-600 hover:bg-blue-700 text-white"
               onClick={() => window.open('https://livepix.gg/vaquinha/minha-terapia', '_blank')}
             >
               {t.livepixVakinha}
@@ -399,7 +399,6 @@ function App() {
             {t.precisionSubtitle}
           </p>
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[precision1, precision2, precision3, precision4, precision5, precision6, precision7, precision8, precision9].map((img, index) => (
             <Card key={index} className="card-shadow overflow-hidden">
