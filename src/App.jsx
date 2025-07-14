@@ -1,6 +1,9 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useState } from 'react'
-import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings } from 'lucide-react'
+import { useState } from 'react';
+import LanguageSelector from './components/LanguageSelector';
+import { cn } from "./lib/utils";
+import { Button, buttonVariants } from "./components/ui/button";
+import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings } from 'lucide-react';
 import livepixQR from './assets/livepxx.png'
 import tiktokIcon from './assets/tiktok-icon.png'
 import discordIcon from './assets/discord-icon.jpg'
@@ -198,9 +201,19 @@ Some texts or diaries below, for those who want to understand everything better`
 }
 
 function App() {
-  const [language, setLanguage] = useState('pt')
-  const [currentPage, setCurrentPage] = useState('home')
-  
+  const [language, setLanguage] = useState(null);
+  const [currentPage, setCurrentPage] = useState("home");
+  const [showLanguageSelection, setShowLanguageSelection] = useState(true);
+
+  const handleLanguageSelect = (lang) => {
+    setLanguage(lang);
+    setShowLanguageSelection(false);
+  };
+
+  if (showLanguageSelection) {
+    return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
+  }
+
   const t = translations[language]
 
   // Componente Card
@@ -216,25 +229,7 @@ function App() {
     </div>
   )
 
-  // Componente Button
-  const Button = ({ children, onClick, variant = "default", className = "", ...props }) => {
-    const baseClasses = "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
-    const variants = {
-      default: "bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4",
-      ghost: "hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4",
-      outline: "border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"
-    }
-    
-    return (
-      <button 
-        className={`${baseClasses} ${variants[variant]} ${className}`}
-        onClick={onClick}
-        {...props}
-      >
-        {children}
-      </button>
-    )
-  }
+
 
   // Componente de navegação
   const NavButton = ({ page, icon: Icon, children }) => (
@@ -302,7 +297,7 @@ function App() {
         <Card className="card-shadow">
           <CardContent className="text-center">
             <Button 
-              className="w-full max-w-md mx-auto min-h-[80px] px-6 py-4 text-lg font-bold bg-green-800 hover:bg-green-900 text-white border-2 border-green-700 button-animation"
+              className="w-full max-w-md mx-auto min-h-[80px] px-6 py-4 text-lg font-bold bg-green-800 hover:bg-green-900 text-white button-animation"
               onClick={() => window.open('https://www.vakinha.com.br/vaquinha/da-enxada-ao-call-of-duty-mobile', '_blank')}            >
               <div className="text-center leading-tight">
                 <div>{t.donateQuick}</div>

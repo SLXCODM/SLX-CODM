@@ -124,7 +124,7 @@
 /* Estilos personalizados */
 
 .text-shadow-strong {
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .gradient-text {
@@ -136,14 +136,14 @@
 }
 
 .nav-button-outline {
-  border: 2px solid var(--primary);
-  box-shadow: 0 0 5px rgba(139, 69, 19, 0.5); /* Sombra para o contorno */
+  border: 1px solid black;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Pequena sombra para o contorno */
   transition: all 0.3s ease-in-out; /* Animação para os botões de navegação */
 }
 
 .nav-button-outline:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(139, 69, 19, 0.7); /* Sombra mais forte no hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Sombra mais forte no hover */
 }
 
 .button-animation {
@@ -169,3 +169,6 @@
     transform: translateY(0);
   }
 }
+
+
+
