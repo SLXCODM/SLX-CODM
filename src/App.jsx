@@ -219,21 +219,22 @@ function App() {
         setShowLanguageSelection(false);
       }
     }
-  }, [language]);
+  }, []);
 
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
     setShowLanguageSelection(false);
   };
 
-  if (showLanguageSelection && window.location.pathname !== '/arsenal') {
-    return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
-  }
-
-  // Se acessou diretamente /arsenal e não tem idioma, usar português
-  if (!language && window.location.pathname === '/arsenal') {
+  // Se acessou diretamente /arsenal, configurar tudo automaticamente
+  if (window.location.pathname === '/arsenal' && !language) {
     setLanguage('pt');
     setShowLanguageSelection(false);
+    setCurrentPage('arsenal');
+  }
+
+  if (showLanguageSelection && window.location.pathname !== '/arsenal') {
+    return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
   }
 
   const t = translations[language]
