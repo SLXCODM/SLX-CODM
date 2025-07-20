@@ -1,0 +1,133 @@
+{
+  "weapons": [
+    {
+      "id": "outlaw",
+      "name": {
+        "pt": "Outlaw",
+        "en": "Outlaw"
+      },
+      "category": {
+        "pt": "Sniper",
+        "en": "Sniper"
+      },
+      "code": {
+        "pt": "2A4C5H6A9C",
+        "en": "2A4C5H6A9C"
+      },
+      "image": {
+        "pt": "1000004329.jpg",
+        "en": "1000004335.jpg"
+      },
+      "keywords": ["outlaw", "sniper", "franco-atirador"]
+    },
+    {
+      "id": "koshka",
+      "name": {
+        "pt": "Koshka",
+        "en": "Koshka"
+      },
+      "category": {
+        "pt": "Sniper",
+        "en": "Sniper"
+      },
+      "code": {
+        "pt": "2A4A5G6A9C",
+        "en": "2A4A5G6A9C"
+      },
+      "image": {
+        "pt": "1000004330.jpg",
+        "en": "1000004336.jpg"
+      },
+      "keywords": ["koshka", "sniper", "franco-atirador"]
+    },
+    {
+      "id": "three-line-rifle",
+      "name": {
+        "pt": "Fuzil de 3 Linhas",
+        "en": "3-Line Rifle"
+      },
+      "category": {
+        "pt": "Sniper",
+        "en": "Sniper"
+      },
+      "code": {
+        "pt": "1E2A4B5F",
+        "en": "1E2A4B5F"
+      },
+      "image": {
+        "pt": "1000004331.jpg",
+        "en": "1000004337.jpg"
+      },
+      "keywords": ["fuzil", "3 linhas", "three line", "rifle", "sniper", "franco-atirador"]
+    },
+    {
+      "id": "locus",
+      "name": {
+        "pt": "Locus",
+        "en": "Locus"
+      },
+      "category": {
+        "pt": "Sniper",
+        "en": "Sniper"
+      },
+      "code": {
+        "pt": "2A4B5H8C9C",
+        "en": "2A4B5H8C9C"
+      },
+      "image": {
+        "pt": "1000004332.jpg",
+        "en": "1000004339.jpg"
+      },
+      "keywords": ["locus", "sniper", "franco-atirador"]
+    },
+    {
+      "id": "dlq33",
+      "name": {
+        "pt": "DL Q33",
+        "en": "DL Q33"
+      },
+      "category": {
+        "pt": "Sniper",
+        "en": "Sniper"
+      },
+      "code": {
+        "pt": "2A4A5A6A8A",
+        "en": "2A4A5A6A8A"
+      },
+      "image": {
+        "pt": "1000004333.jpg",
+        "en": "1000004340.jpg"
+      },
+      "keywords": ["dlq", "dl q33", "dlq33", "sniper", "franco-atirador"]
+    },
+    {
+      "id": "lw3-tundra",
+      "name": {
+        "pt": "LW3-Tundra",
+        "en": "LW3-Tundra"
+      },
+      "category": {
+        "pt": "Sniper",
+        "en": "Sniper"
+      },
+      "code": {
+        "pt": "1A2F5A8A9E",
+        "en": "1A2F5A8A9E"
+      },
+      "image": {
+        "pt": "1000004334.jpg",
+        "en": "1000004338.jpg"
+      },
+      "keywords": ["lw3", "tundra", "lw3-tundra", "sniper", "franco-atirador"]
+    }
+  ],
+  "categories": {
+    "pt": [
+      "Sniper"
+    ],
+    "en": [
+      "Sniper"
+    ]
+  }
+}
+

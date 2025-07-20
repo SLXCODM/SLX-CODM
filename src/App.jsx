@@ -1,9 +1,10 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState } from 'react';
 import LanguageSelector from './components/LanguageSelector';
+import WeaponArsenal from './components/WeaponArsenal';
 import { cn } from "./lib/utils";
 import { Button, buttonVariants } from "./components/ui/button";
-import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings } from 'lucide-react';
+import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings, Crosshair } from 'lucide-react';
 import livepixQR from './assets/livepxx.png'
 import tiktokIcon from './assets/tiktok-icon.png'
 import discordIcon from './assets/discord-icon.jpg'
@@ -28,6 +29,7 @@ const translations = {
       social: "Redes Sociais",
       tutorials: "Tutoriais",
       configurations: "Configurações",
+      arsenal: "Arsenal",
       about: "Sobre"
     },
     welcome: "Bem-vindo ao SLX Gaming!",
@@ -118,6 +120,7 @@ Alguns textos ou diários abaixo, para quem quiser entender tudo melhor`
       social: "Social Media",
       tutorials: "Tutorials",
       configurations: "Settings",
+      arsenal: "Arsenal",
       about: "About"
     },
     welcome: "Welcome to SLX Gaming!",
@@ -692,6 +695,9 @@ function App() {
             <NavButton page="configurations" icon={Settings}>
               {t.navigation.configurations}
             </NavButton>
+            <NavButton page="arsenal" icon={Crosshair}>
+              {t.navigation.arsenal}
+            </NavButton>
             <NavButton page="about" icon={Target}>
               {t.navigation.about}
             </NavButton>
@@ -713,6 +719,7 @@ function App() {
         {currentPage === 'social' && <SocialPage />}
         {currentPage === 'configurations' && <ConfigurationsPage />}
         {currentPage === 'tutorials' && <TutorialsPage />}
+        {currentPage === 'arsenal' && <WeaponArsenal language={language} />}
         {currentPage === 'about' && <AboutPage />}
       </main>
 
