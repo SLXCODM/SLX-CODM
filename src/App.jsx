@@ -208,10 +208,10 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [showLanguageSelection, setShowLanguageSelection] = useState(true);
 
-  // Verificar se há rota direta para arsenal na URL
+  // Verificar se há rota direta para arsenal-exclusivo na URL
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === '/arsenal') {
+    if (path === '/arsenal-exclusivo') {
       setCurrentPage('arsenal');
       // Se não há idioma selecionado, usar português como padrão para acesso direto
       if (!language) {
@@ -226,14 +226,14 @@ function App() {
     setShowLanguageSelection(false);
   };
 
-  // Se acessou diretamente /arsenal, configurar tudo automaticamente
-  if (window.location.pathname === '/arsenal' && !language) {
+  // Se acessou diretamente /arsenal-exclusivo, configurar tudo automaticamente
+  if (window.location.pathname === '/arsenal-exclusivo' && !language) {
     setLanguage('pt');
     setShowLanguageSelection(false);
     setCurrentPage('arsenal');
   }
 
-  if (showLanguageSelection && window.location.pathname !== '/arsenal') {
+  if (showLanguageSelection && window.location.pathname !== '/arsenal-exclusivo') {
     return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
   }
 
@@ -725,7 +725,7 @@ function App() {
             <NavButton page="configurations" icon={Settings}>
               {t.navigation.configurations}
             </NavButton>
-            <NavButton page="arsenal" icon={Crosshair} externalLink="https://sub4unlock.io/VjMLD">
+            <NavButton page="arsenal" icon={Crosshair} externalLink="https://sub4unlock.io/THl0o">
               {t.navigation.arsenal}
             </NavButton>
             <NavButton page="about" icon={Target}>
