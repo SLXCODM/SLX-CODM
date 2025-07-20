@@ -204,20 +204,28 @@ Some texts or diaries below, for those who want to understand everything better`
 }
 
 function App() {
-  const [language, setLanguage] = useState(null);
-  const [currentPage, setCurrentPage] = useState("home");
-  const [showLanguageSelection, setShowLanguageSelection] = useState(true);
+  const [language, setLanguage] = useState(() => {
+    // Se é página arsenal-exclusivo, definir português imediatamente
+    return window.location.pathname === '/arsenal-exclusivo' ? 'pt' : null;
+  });
+  
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Se é página arsenal-exclusivo, definir arsenal imediatamente
+    return window.location.pathname === '/arsenal-exclusivo' ? 'arsenal' : 'home';
+  });
+  
+  const [showLanguageSelection, setShowLanguageSelection] = useState(() => {
+    // Se é página arsenal-exclusivo, não mostrar seleção de idioma
+    return window.location.pathname !== '/arsenal-exclusivo';
+  });
 
   // Verificar se há rota direta para arsenal-exclusivo na URL
   useEffect(() => {
     const path = window.location.pathname;
     if (path === '/arsenal-exclusivo') {
       setCurrentPage('arsenal');
-      // Se não há idioma selecionado, usar português como padrão para acesso direto
-      if (!language) {
-        setLanguage('pt');
-        setShowLanguageSelection(false);
-      }
+      setLanguage('pt');
+      setShowLanguageSelection(false);
     }
   }, []);
 
@@ -226,18 +234,20 @@ function App() {
     setShowLanguageSelection(false);
   };
 
-  // Se acessou diretamente /arsenal-exclusivo, configurar tudo automaticamente
-  if (window.location.pathname === '/arsenal-exclusivo' && !language) {
-    setLanguage('pt');
-    setShowLanguageSelection(false);
-    setCurrentPage('arsenal');
-  }
-
+  // Se ainda está mostrando seleção de idioma e não é página arsenal
   if (showLanguageSelection && window.location.pathname !== '/arsenal-exclusivo') {
     return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
   }
 
-  const t = translations[language]
+  // Se não tem idioma definido ainda (só para páginas normais)
+  if (!language && window.location.pathname !== '/arsenal-exclusivo') {
+    return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
+  }
+
+  // Garantir que temos um idioma definido
+  const currentLanguage = language || 'pt';
+
+  const t = translations[currentLanguage]
 
   // Componente Card
   const Card = ({ children, className = "" }) => (
@@ -732,12 +742,12 @@ function App() {
               {t.navigation.about}
             </NavButton>
             <Button
-              onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
+              onClick={() => setLanguage(currentLanguage === 'pt' ? 'en' : 'pt')}
               variant="ghost"
               className="flex items-center gap-2"
             >
               <Globe className="h-4 w-4" />
-              {language === 'pt' ? '🇺🇸' : '🇧🇷'}
+              {currentLanguage === 'pt' ? '🇺🇸' : '🇧🇷'}
             </Button>
           </div>
         </div>
@@ -749,14 +759,14 @@ function App() {
         {currentPage === 'social' && <SocialPage />}
         {currentPage === 'configurations' && <ConfigurationsPage />}
         {currentPage === 'tutorials' && <TutorialsPage />}
-        {currentPage === 'arsenal' && <WeaponArsenal language={language} />}
+        {currentPage === 'arsenal' && <WeaponArsenal language={currentLanguage} />}
         {currentPage === 'about' && <AboutPage />}
       </main>
 
       {/* Footer */}
       <footer className="border-t border-border mt-16">
         <div className="container mx-auto px-4 py-8 text-center text-muted-foreground">
-          <p>© 2025 SLX Gaming. {language === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}</p>
+          <p>© 2025 SLX Gaming. {currentLanguage === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}</p>
         </div>
       </footer>
     </div>
