@@ -1,5 +1,5 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LanguageSelector from './components/LanguageSelector';
 import WeaponArsenal from './components/WeaponArsenal';
 import { cn } from "./lib/utils";
@@ -208,13 +208,32 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [showLanguageSelection, setShowLanguageSelection] = useState(true);
 
+  // Verificar se há rota direta para arsenal na URL
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === '/arsenal') {
+      setCurrentPage('arsenal');
+      // Se não há idioma selecionado, usar português como padrão para acesso direto
+      if (!language) {
+        setLanguage('pt');
+        setShowLanguageSelection(false);
+      }
+    }
+  }, [language]);
+
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
     setShowLanguageSelection(false);
   };
 
-  if (showLanguageSelection) {
+  if (showLanguageSelection && window.location.pathname !== '/arsenal') {
     return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
+  }
+
+  // Se acessou diretamente /arsenal e não tem idioma, usar português
+  if (!language && window.location.pathname === '/arsenal') {
+    setLanguage('pt');
+    setShowLanguageSelection(false);
   }
 
   const t = translations[language]
@@ -235,16 +254,26 @@ function App() {
 
 
   // Componente de navegação
-  const NavButton = ({ page, icon: Icon, children }) => (
-    <Button
-      onClick={() => setCurrentPage(page)}
-      variant={currentPage === page ? "default" : "outline"}
-      className={`flex items-center gap-2 ${currentPage === page ? "" : "nav-button-outline"}`}
-    >
-      <Icon className="h-4 w-4" />
-      {children}
-    </Button>
-  )
+  const NavButton = ({ page, icon: Icon, children, externalLink }) => {
+    const handleClick = () => {
+      if (externalLink) {
+        window.open(externalLink, '_blank');
+      } else {
+        setCurrentPage(page);
+      }
+    };
+
+    return (
+      <Button
+        onClick={handleClick}
+        variant={currentPage === page ? "default" : "outline"}
+        className={`flex items-center gap-2 ${currentPage === page ? "" : "nav-button-outline"}`}
+      >
+        <Icon className="h-4 w-4" />
+        {children}
+      </Button>
+    );
+  }
 
   // Página inicial
   const HomePage = () => (
@@ -695,7 +724,7 @@ function App() {
             <NavButton page="configurations" icon={Settings}>
               {t.navigation.configurations}
             </NavButton>
-            <NavButton page="arsenal" icon={Crosshair}>
+            <NavButton page="arsenal" icon={Crosshair} externalLink="https://sub4unlock.io/VjMLD">
               {t.navigation.arsenal}
             </NavButton>
             <NavButton page="about" icon={Target}>
