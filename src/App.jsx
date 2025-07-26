@@ -2,6 +2,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState, useEffect } from 'react';
 import LanguageSelector from './components/LanguageSelector';
 import WeaponArsenal from './components/WeaponArsenal';
+import UnlockManager from './components/UnlockManager';
 import { cn } from "./lib/utils";
 import { Button, buttonVariants } from "./components/ui/button";
 import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings, Crosshair } from 'lucide-react';
@@ -735,7 +736,7 @@ function App() {
             <NavButton page="configurations" icon={Settings}>
               {t.navigation.configurations}
             </NavButton>
-            <NavButton page="arsenal" icon={Crosshair} externalLink="https://sub4unlock.io/THl0o">
+            <NavButton page="arsenal" icon={Crosshair}>
               {t.navigation.arsenal}
             </NavButton>
             <NavButton page="about" icon={Target}>
@@ -757,9 +758,21 @@ function App() {
       <main className="container mx-auto px-4 py-8">
         {currentPage === 'home' && <HomePage />}
         {currentPage === 'social' && <SocialPage />}
-        {currentPage === 'configurations' && <ConfigurationsPage />}
-        {currentPage === 'tutorials' && <TutorialsPage />}
-        {currentPage === 'arsenal' && <WeaponArsenal language={currentLanguage} />}
+        {currentPage === 'configurations' && (
+          <UnlockManager contentName="Configurações Exclusivas" language={currentLanguage}>
+            <ConfigurationsPage />
+          </UnlockManager>
+        )}
+        {currentPage === 'tutorials' && (
+          <UnlockManager contentName="Tutoriais Exclusivos" language={currentLanguage}>
+            <TutorialsPage />
+          </UnlockManager>
+        )}
+        {currentPage === 'arsenal' && (
+          <UnlockManager contentName="Arsenal Exclusivo" language={currentLanguage}>
+            <WeaponArsenal language={currentLanguage} />
+          </UnlockManager>
+        )}
         {currentPage === 'about' && <AboutPage />}
       </main>
 
