@@ -594,7 +594,7 @@ function App() {
             <p className="text-lg text-primary font-semibold">{t.tutorialTikTok}</p>
             <Button 
               className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/TnAsP', '_blank')}
+              onClick={() => window.open('https://www.tiktok.com/@slxcodm_/collection/Dicas e tutoriais-7505787344423766790?is_from_webapp=1&sender_device=pc', '_blank')}
             >
               {language === 'pt' ? 'Acessar Tutoriais' : 'Access Tutorials'}
             </Button>
@@ -608,7 +608,7 @@ function App() {
             <p className="text-lg text-primary font-semibold">{t.tutorialYouTube}</p>
             <Button 
               className="w-full bg-red-600 hover:bg-red-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/jnf7Q', '_blank')}
+              onClick={() => window.open('https://youtube.com/playlist?list=PLNjPit_9myAFBhDzh635QGPgzukbXRYLg&si=USW67NX2QODG00eh', '_blank')}
             >
               {language === 'pt' ? 'Acessar Tutoriais' : 'Access Tutorials'}
             </Button>
@@ -643,7 +643,7 @@ function App() {
             <p className="text-lg text-primary font-semibold">{t.configTikTok}</p>
             <Button 
               className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/Zy3oC', '_blank')}
+              onClick={() => window.open('https://www.tiktok.com/@slxcodm_/collection/Configs, loadouts, sensi etc-7510645794769668869?is_from_webapp=1&sender_device=pc', '_blank')}
             >
               {language === 'pt' ? 'Acessar Configurações' : 'Access Configurations'}
             </Button>
@@ -657,7 +657,7 @@ function App() {
             <p className="text-lg text-primary font-semibold">{t.configYouTube}</p>
             <Button 
               className="w-full bg-red-600 hover:bg-red-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/hBlXP', '_blank')}
+              onClick={() => window.open('https://youtube.com/playlist?list=PLNjPit_9myAFwYgp2zNBJs6EzzZ-qs839&si=1nwFMIqFbddx6X0F', '_blank')}
             >
               {language === 'pt' ? 'Acessar Configurações' : 'Access Configurations'}
             </Button>

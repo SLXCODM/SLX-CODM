@@ -12,17 +12,17 @@ const UnlockManager = ({ children, contentName, language = 'pt' }) => {
   const texts = {
     pt: {
       title: "🔒 Conteúdo Exclusivo",
-      subtitle: `Desbloqueie ${contentName} seguindo @slx_codm`,
+      subtitle: `Desbloqueie ${contentName} seguindo @slx.wav`,
       globalTitle: "🌟 Acesso Total Desbloqueado!",
       globalSubtitle: "Você tem acesso a todo conteúdo exclusivo do SLX Gaming",
-      followButton: "Seguir @slx_codm",
+      followButton: "Seguir @slx.wav",
       checkButton: "Já Segui - Verificar",
       checking: "Verificando...",
       unlocked: "Desbloqueado! ✨",
       description: "Após seguir no Instagram, volte aqui e clique em 'Já Segui' para verificar.",
       alreadyFollowing: "Você já tem acesso a este conteúdo!",
       benefits: [
-        "Arsenal completo com 6+ armas",
+        "Arsenal completo com todas as armas",
         "Tutoriais exclusivos",
         "Configurações profissionais",
         "Atualizações em primeira mão"
@@ -31,17 +31,17 @@ const UnlockManager = ({ children, contentName, language = 'pt' }) => {
     },
     en: {
       title: "🔒 Exclusive Content",
-      subtitle: `Unlock ${contentName} by following @slx_codm`,
+      subtitle: `Unlock ${contentName} by following @slx.wav`,
       globalTitle: "🌟 Full Access Unlocked!",
       globalSubtitle: "You have access to all SLX Gaming exclusive content",
-      followButton: "Follow @slx_codm",
+      followButton: "Follow @slx.wav",
       checkButton: "Already Followed - Check",
       checking: "Checking...",
       unlocked: "Unlocked! ✨",
       description: "After following on Instagram, come back here and click 'Already Followed' to verify.",
       alreadyFollowing: "You already have access to this content!",
       benefits: [
-        "Complete arsenal with 6+ weapons",
+        "Complete arsenal with all weapons",
         "Exclusive tutorials",
         "Professional configurations",
         "First-hand updates"
@@ -86,7 +86,7 @@ const UnlockManager = ({ children, contentName, language = 'pt' }) => {
 
   const handleFollowClick = () => {
     // Abrir Instagram em nova aba
-    window.open('https://instagram.com/slx_codm', '_blank');
+    window.open('https://www.instagram.com/slx.wav', '_blank');
   };
 
   // Se já desbloqueou, mostrar o conteúdo
