@@ -159,6 +159,8 @@ const translations = {
     myTutorials: "Meus Tutoriais",
     tutorialTikTok: "no TikTok",
     tutorialYouTube: "no YouTube",
+    tutorialPageDescription: "Conteúdo exclusivo para melhorar sua gameplay",
+    configPageDescription: "Configurações profissionais para dominar o jogo",
     myGamingSetup: "Meu Setup Gamer",
     aboutMeText: "Mas enfim, quem é esse cara?",
     aboutMeContent: `Uma breve descrição do que você pode gostar de saber sobre este nictófilo:
@@ -246,6 +248,8 @@ Alguns textos ou diários abaixo, para quem quiser entender tudo melhor`
     myTutorials: "My Tutorials",
     tutorialTikTok: "on TikTok",
     tutorialYouTube: "on YouTube",
+    tutorialPageDescription: "Exclusive content to improve your gameplay",
+    configPageDescription: "Professional settings to dominate the game",
     myGamingSetup: "My Gaming Setup",
     aboutMeText: "But anyway, who is this guy?",
     aboutMeContent: `A brief description of what you might like to know about this nyctophile:
@@ -664,7 +668,7 @@ function App() {
           </h2>
         </div>
         <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-          Conteúdo exclusivo para melhorar sua gameplay
+          {t.tutorialPageDescription}
         </p>
       </div>
       
@@ -716,7 +720,7 @@ function App() {
           </h2>
         </div>
         <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-          Configurações profissionais para dominar o jogo
+          {t.configPageDescription}
         </p>
       </div>
       
