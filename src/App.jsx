@@ -661,8 +661,8 @@ function App() {
    const TutorialsPage = () => (
     <div className="space-y-8">
       <div className="text-center space-y-6">
-        <div className="flex items-center justify-center gap-4">
-          <Book className="h-12 w-12 text-amber-600 page-icon" />
+        <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
+          <Book className="h-10 w-10 md:h-12 md:w-12 text-orange-600 page-icon" />
           <h2 className="text-3xl font-bold gradient-text">
             {t.exclusiveTutorials}
           </h2>
@@ -713,8 +713,8 @@ function App() {
  const ConfigurationsPage = () => (
     <div className="space-y-8">
       <div className="text-center space-y-6">
-        <div className="flex items-center justify-center gap-4">
-          <Settings className="h-12 w-12 text-blue-600 page-icon" />
+        <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
+          <Settings className="h-10 w-10 md:h-12 md:w-12 text-orange-600 page-icon" />
           <h2 className="text-3xl font-bold gradient-text">
             {t.exclusiveConfigurations}
           </h2>
