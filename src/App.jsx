@@ -5,10 +5,94 @@ import WeaponArsenal from './components/WeaponArsenal';
 import UnlockManager from './components/UnlockManager';
 import { cn } from "./lib/utils";
 import { Button, buttonVariants } from "./components/ui/button";
-import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings, Crosshair } from 'lucide-react';
+import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings, Crosshair, Book } from 'lucide-react';
 import livepixQR from './assets/livepxx.png'
 import tiktokIcon from './assets/tiktok-icon.png'
 import discordIcon from './assets/discord-icon.jpg'
+
+// Estilos CSS personalizados
+const customStyles = `
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .card-shadow:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .nav-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .nav-button:active {
+    transform: translateY(0);
+  }
+  
+  .social-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .social-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .page-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .page-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+// Adicionar estilos ao head
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement("style");
+  styleSheet.innerText = customStyles;
+  document.head.appendChild(styleSheet);
+}
 import setup1 from './assets/setup1.jpg'
 import setup2 from './assets/setup2.jpg'
 import precision1 from './assets/precision1.jpg'
@@ -66,12 +150,12 @@ const translations = {
     tiktokSubSubtitle: "TikTok live inscrições",
     youtubeAgricultureSubtitle: "Meu trabalho e desenvolvimento pessoal",
     exclusiveConfigurations: "Configurações Exclusivas",
-    followToUnlockConfigs: "Siga no Instagram para desbloquear minhas configurações exclusivas do Call of Duty Mobile!\n𝙉𝙊𝙏𝘼: 𝙎𝙚 𝙚𝙨𝙩𝙞𝙫𝙚𝙧 𝙪𝙨𝙖𝙣𝙙𝙤 𝙤 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙦𝙪𝙚 𝙚𝙢 𝘼𝙗𝙧𝙞𝙧 𝙣𝙤 𝙉𝙖𝙫𝙚𝙜𝙖𝙙𝙤𝙧",
+    followToUnlockConfigs: "",
     myConfigurations: "Minhas Configurações",
     configTikTok: "no TikTok",
     configYouTube: "no YouTube",
     exclusiveTutorials: "Tutoriais Exclusivos",
-    followToUnlockTutorials: "Siga no Instagram para desbloquear minhas configurações exclusivas do Call of Duty Mobile!\n𝙉𝙊𝙏𝘼: 𝙎𝙚 𝙚𝙨𝙩𝙞𝙫𝙚𝙧 𝙪𝙨𝙖𝙣𝙙𝙤 𝙤 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙦𝙪𝙚 𝙚𝙢 𝘼𝙗𝙧𝙞𝙧 𝙣𝙤 𝙉𝙖𝙫𝙚𝙜𝙖𝙙𝙤𝙧",
+    followToUnlockTutorials: "",
     myTutorials: "Meus Tutoriais",
     tutorialTikTok: "no TikTok",
     tutorialYouTube: "no YouTube",
@@ -279,7 +363,7 @@ function App() {
       <Button
         onClick={handleClick}
         variant={currentPage === page ? "default" : "outline"}
-        className={`flex items-center gap-2 ${currentPage === page ? "" : "nav-button-outline"}`}
+        className={`flex items-center gap-2 nav-button ${currentPage === page ? "" : "nav-button-outline"}`}
       >
         <Icon className="h-4 w-4" />
         {children}
@@ -468,13 +552,13 @@ function App() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-12 w-12 mx-auto text-red-500" />
             <h3 className="text-xl font-bold">YouTube SLX</h3>
             <p className="text-sm text-muted-foreground">{t.youtubeSubtitle}</p>
             <Button 
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
+              className="w-full bg-red-600 hover:bg-red-700 text-white social-button"
               onClick={() => window.open('https://www.youtube.com/@SLXCODM', '_blank')}
             >
               {language === 'pt' ? 'Inscrever-se' : 'Subscribe'}
@@ -482,13 +566,13 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-12 w-12 mx-auto text-green-500" />
             <h3 className="text-xl font-bold">YouTube Agricultura SLNX</h3>
             <p className="text-sm text-muted-foreground">{t.youtubeAgricultureSubtitle}</p>
             <Button 
-              className="w-full bg-green-600 hover:bg-green-700 text-white"
+              className="w-full bg-green-600 hover:bg-green-700 text-white social-button"
               onClick={() => window.open('https://www.youtube.com/@SLNXofc', '_blank')}
             >
               {language === 'pt' ? 'Inscrever-se' : 'Subscribe'}
@@ -496,13 +580,13 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Instagram className="h-12 w-12 mx-auto text-pink-500" />
             <h3 className="text-xl font-bold">Instagram</h3>
             <p className="text-sm text-muted-foreground">{t.instagramSubtitle}</p>
             <Button 
-              className="w-full bg-pink-600 hover:bg-pink-700 text-white"
+              className="w-full bg-pink-600 hover:bg-pink-700 text-white social-button"
               onClick={() => window.open('https://www.instagram.com/slx.wav', '_blank')}
             >
               {language === 'pt' ? 'Seguir' : 'Follow'}
@@ -510,8 +594,8 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok" 
@@ -521,7 +605,7 @@ function App() {
             <h3 className="text-xl font-bold">TikTok</h3>
             <p className="text-sm text-muted-foreground">{t.tiktokSubtitle}</p>
             <Button 
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white social-button"
               onClick={() => window.open('https://www.tiktok.com/@slxcodm_', '_blank')}
             >
               {language === 'pt' ? 'Seguir' : 'Follow'}
@@ -529,8 +613,8 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok Sub" 
@@ -540,7 +624,7 @@ function App() {
             <h3 className="text-xl font-bold">TikTok Sub</h3>
             <p className="text-sm text-muted-foreground">{t.tiktokSubSubtitle}</p>
             <Button 
-              className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+              className="w-full bg-teal-600 hover:bg-teal-700 text-white social-button"
               onClick={() => window.open('https://vm.tiktok.com/ZMSs91c6U/', '_blank')}
             >
               {language === 'pt' ? 'Inscrever' : 'Subscribe'}
@@ -548,8 +632,8 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={discordIcon} 
               alt="Discord" 
@@ -558,7 +642,7 @@ function App() {
             <h3 className="text-xl font-bold">Discord</h3>
             <p className="text-sm text-muted-foreground">{language === 'pt' ? 'Servidor da comunidade' : 'Community Server'}</p>
             <Button 
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white social-button"
               onClick={() => window.open('https://discord.com/invite/RyMuC8wwCt', '_blank')}
             >
               {language === 'pt' ? 'Entrar' : 'Join'}
@@ -572,18 +656,21 @@ function App() {
   // Página de Tutoriais
    const TutorialsPage = () => (
     <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold gradient-text">
-          {t.exclusiveTutorials}
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {t.followToUnlockTutorials}
+      <div className="text-center space-y-6">
+        <div className="flex items-center justify-center gap-4">
+          <Book className="h-12 w-12 text-amber-600 page-icon" />
+          <h2 className="text-3xl font-bold gradient-text">
+            {t.exclusiveTutorials}
+          </h2>
+        </div>
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          Conteúdo exclusivo para melhorar sua gameplay
         </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok" 
@@ -593,7 +680,7 @@ function App() {
             <h3 className="text-xl font-bold">{t.myTutorials}</h3>
             <p className="text-lg text-primary font-semibold">{t.tutorialTikTok}</p>
             <Button 
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white social-button"
               onClick={() => window.open('https://www.tiktok.com/@slxcodm_/collection/Dicas e tutoriais-7505787344423766790?is_from_webapp=1&sender_device=pc', '_blank')}
             >
               {language === 'pt' ? 'Acessar Tutoriais' : 'Access Tutorials'}
@@ -601,13 +688,13 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-16 w-16 mx-auto text-red-500" />
             <h3 className="text-xl font-bold">{t.myTutorials}</h3>
             <p className="text-lg text-primary font-semibold">{t.tutorialYouTube}</p>
             <Button 
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
+              className="w-full bg-red-600 hover:bg-red-700 text-white social-button"
               onClick={() => window.open('https://youtube.com/playlist?list=PLNjPit_9myAFBhDzh635QGPgzukbXRYLg&si=USW67NX2QODG00eh', '_blank')}
             >
               {language === 'pt' ? 'Acessar Tutoriais' : 'Access Tutorials'}
@@ -621,18 +708,21 @@ function App() {
   // Página de Configurações
  const ConfigurationsPage = () => (
     <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold gradient-text">
-          {t.exclusiveConfigurations}
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {t.followToUnlockConfigs}
+      <div className="text-center space-y-6">
+        <div className="flex items-center justify-center gap-4">
+          <Settings className="h-12 w-12 text-blue-600 page-icon" />
+          <h2 className="text-3xl font-bold gradient-text">
+            {t.exclusiveConfigurations}
+          </h2>
+        </div>
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          Configurações profissionais para dominar o jogo
         </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok" 
@@ -642,7 +732,7 @@ function App() {
             <h3 className="text-xl font-bold">{t.myConfigurations}</h3>
             <p className="text-lg text-primary font-semibold">{t.configTikTok}</p>
             <Button 
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white social-button"
               onClick={() => window.open('https://www.tiktok.com/@slxcodm_/collection/Configs, loadouts, sensi etc-7510645794769668869?is_from_webapp=1&sender_device=pc', '_blank')}
             >
               {language === 'pt' ? 'Acessar Configurações' : 'Access Configurations'}
@@ -650,13 +740,13 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-16 w-16 mx-auto text-red-500" />
             <h3 className="text-xl font-bold">{t.myConfigurations}</h3>
             <p className="text-lg text-primary font-semibold">{t.configYouTube}</p>
             <Button 
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
+              className="w-full bg-red-600 hover:bg-red-700 text-white social-button"
               onClick={() => window.open('https://youtube.com/playlist?list=PLNjPit_9myAFwYgp2zNBJs6EzzZ-qs839&si=1nwFMIqFbddx6X0F', '_blank')}
             >
               {language === 'pt' ? 'Acessar Configurações' : 'Access Configurations'}
