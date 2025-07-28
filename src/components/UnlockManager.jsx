@@ -22,7 +22,7 @@ const UnlockManager = ({ children, contentName, language = 'pt' }) => {
       description: "Após seguir no Instagram, volte aqui e clique em 'Já Segui' para verificar.",
       alreadyFollowing: "Você já tem acesso a este conteúdo!",
       benefits: [
-        "Arsenal completo com todas as armas",
+        "Arsenal completo com 17 armas",
         "Tutoriais exclusivos",
         "Configurações profissionais",
         "Atualizações em primeira mão"
@@ -41,7 +41,7 @@ const UnlockManager = ({ children, contentName, language = 'pt' }) => {
       description: "After following on Instagram, come back here and click 'Already Followed' to verify.",
       alreadyFollowing: "You already have access to this content!",
       benefits: [
-        "Complete arsenal with all weapons",
+        "Complete arsenal with 17 weapons",
         "Exclusive tutorials",
         "Professional configurations",
         "First-hand updates"
