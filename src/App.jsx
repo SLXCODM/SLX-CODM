@@ -104,6 +104,14 @@ import precision6 from './assets/precision6.jpg'
 import precision7 from './assets/precision7.jpg'
 import precision8 from './assets/precision8.jpg'
 import precision9 from './assets/precision9.jpg'
+import precision10 from './assets/1000004347.jpg'
+import precision11 from './assets/1000004348.jpg'
+import precision12 from './assets/1000004349.jpg'
+import precision13 from './assets/1000004356.jpg'
+import precision14 from './assets/1000004357.jpg'
+import precision15 from './assets/1000004370.jpg'
+import precision16 from './assets/1000004371.jpg'
+import precision17 from './assets/1000004373.jpg'
 import './App.css'
 
 // Dados de tradução
@@ -532,7 +540,7 @@ function App() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[precision1, precision2, precision3, precision4, precision5, precision6, precision7, precision8, precision9].map((img, index) => (
+          {[precision1, precision2, precision3, precision4, precision5, precision6, precision7, precision8, precision9, precision10, precision11, precision12, precision13, precision14, precision15, precision16, precision17].map((img, index) => (
             <Card key={index} className="card-shadow overflow-hidden">
               <img 
                 src={img} 
