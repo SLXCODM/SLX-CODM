@@ -7,7 +7,7 @@
         "en": "Outlaw"
       },
       "category": {
-        "pt": "Sniper",
+        "pt": "Franco-atirador",
         "en": "Sniper"
       },
       "code": {
@@ -27,7 +27,7 @@
         "en": "Koshka"
       },
       "category": {
-        "pt": "Sniper",
+        "pt": "Franco-atirador",
         "en": "Sniper"
       },
       "code": {
@@ -47,7 +47,7 @@
         "en": "3-Line Rifle"
       },
       "category": {
-        "pt": "Sniper",
+        "pt": "Franco-atirador",
         "en": "Sniper"
       },
       "code": {
@@ -67,7 +67,7 @@
         "en": "Locus"
       },
       "category": {
-        "pt": "Sniper",
+        "pt": "Franco-atirador",
         "en": "Sniper"
       },
       "code": {
@@ -87,7 +87,7 @@
         "en": "DL Q33"
       },
       "category": {
-        "pt": "Sniper",
+        "pt": "Franco-atirador",
         "en": "Sniper"
       },
       "code": {
@@ -107,7 +107,7 @@
         "en": "LW3-Tundra"
       },
       "category": {
-        "pt": "Sniper",
+        "pt": "Franco-atirador",
         "en": "Sniper"
       },
       "code": {
@@ -119,14 +119,244 @@
         "en": "1000004338.jpg"
       },
       "keywords": ["lw3", "tundra", "lw3-tundra", "sniper", "franco-atirador"]
+    },
+    {
+      "id": "cx9",
+      "name": {
+        "pt": "CX-9",
+        "en": "CX-9"
+      },
+      "category": {
+        "pt": "SMT",
+        "en": "SMG"
+      },
+      "code": {
+        "pt": "1A2B4C8B9A",
+        "en": "1A2B4C8B9A"
+      },
+      "image": {
+        "pt": "cx9_pt.jpg",
+        "en": "cx9_en.jpg"
+      },
+      "keywords": ["cx9", "cx-9", "smt", "smg", "submetralhadora"]
+    },
+    {
+      "id": "vmp",
+      "name": {
+        "pt": "VMP",
+        "en": "VMP"
+      },
+      "category": {
+        "pt": "SMT",
+        "en": "SMG"
+      },
+      "code": {
+        "pt": "2D4C5H8A9C",
+        "en": "2D4C5H8A9C"
+      },
+      "image": {
+        "pt": "vmp_pt.jpg",
+        "en": "vmp_en.jpg"
+      },
+      "keywords": ["vmp", "smt", "smg", "submetralhadora"]
+    },
+    {
+      "id": "switchblade-x9",
+      "name": {
+        "pt": "Switchblade X9",
+        "en": "Switchblade X9"
+      },
+      "category": {
+        "pt": "SMT",
+        "en": "SMG"
+      },
+      "code": {
+        "pt": "1A2C4C8A9A",
+        "en": "1A2C4C8A9A"
+      },
+      "image": {
+        "pt": "switchblade_pt.jpg",
+        "en": "switchblade_en.jpg"
+      },
+      "keywords": ["switchblade", "x9", "smt", "smg", "submetralhadora"]
+    },
+    {
+      "id": "mx9",
+      "name": {
+        "pt": "MX9",
+        "en": "MX9"
+      },
+      "category": {
+        "pt": "SMT",
+        "en": "SMG"
+      },
+      "code": {
+        "pt": "1B2A4D6C8B",
+        "en": "1B2A4D6C8B"
+      },
+      "image": {
+        "pt": "mx9_pt.jpg",
+        "en": "mx9_en.jpg"
+      },
+      "keywords": ["mx9", "mx-9", "smt", "smg", "submetralhadora"]
+    },
+    {
+      "id": "type19",
+      "name": {
+        "pt": "Type 19",
+        "en": "Type 19"
+      },
+      "category": {
+        "pt": "Assalto",
+        "en": "Assault"
+      },
+      "code": {
+        "pt": "1D4A7B8B9C",
+        "en": "1D4A7B8B9C"
+      },
+      "image": {
+        "pt": "type19_pt.jpg",
+        "en": "type19_en.jpg"
+      },
+      "keywords": ["type19", "type 19", "assalto", "assault", "rifle"]
+    },
+    {
+      "id": "xm4",
+      "name": {
+        "pt": "XM4",
+        "en": "XM4"
+      },
+      "category": {
+        "pt": "Assalto",
+        "en": "Assault"
+      },
+      "code": {
+        "pt": "1A2G4A7C8D",
+        "en": "1A2G4A7C8D"
+      },
+      "image": {
+        "pt": "xm4_pt.jpg",
+        "en": "xm4_en.jpg"
+      },
+      "keywords": ["xm4", "xm-4", "assalto", "assault", "rifle"]
+    },
+    {
+      "id": "drh",
+      "name": {
+        "pt": "DR-H",
+        "en": "DR-H"
+      },
+      "category": {
+        "pt": "Assalto",
+        "en": "Assault"
+      },
+      "code": {
+        "pt": "1A2B4A8C9A",
+        "en": "1A2B4A8C9A"
+      },
+      "image": {
+        "pt": "drh_pt.jpg",
+        "en": "drh_en.jpg"
+      },
+      "keywords": ["drh", "dr-h", "assalto", "assault", "rifle"]
+    },
+    {
+      "id": "oden",
+      "name": {
+        "pt": "Oden",
+        "en": "Oden"
+      },
+      "category": {
+        "pt": "Assalto",
+        "en": "Assault"
+      },
+      "code": {
+        "pt": "1A4A5A7C9A",
+        "en": "1A4A5A7C9A"
+      },
+      "image": {
+        "pt": "oden_pt.jpg",
+        "en": "oden_en.jpg"
+      },
+      "keywords": ["oden", "assalto", "assault", "rifle"]
+    },
+    {
+      "id": "hs0405",
+      "name": {
+        "pt": "HS0405",
+        "en": "HS0405"
+      },
+      "category": {
+        "pt": "Escopeta",
+        "en": "Shotgun"
+      },
+      "code": {
+        "pt": "1F2A4A5E6A",
+        "en": "1F2A4A5E6A"
+      },
+      "image": {
+        "pt": "hs0405_pt.jpg",
+        "en": "hs0405_en.jpg"
+      },
+      "keywords": ["hs0405", "hs", "escopeta", "shotgun"]
+    },
+    {
+      "id": "by15",
+      "name": {
+        "pt": "BY15",
+        "en": "BY15"
+      },
+      "category": {
+        "pt": "Escopeta",
+        "en": "Shotgun"
+      },
+      "code": {
+        "pt": "1C2A3A4A8B",
+        "en": "1C2A3A4A8B"
+      },
+      "image": {
+        "pt": "by15_pt.jpg",
+        "en": "by15_en.jpg"
+      },
+      "keywords": ["by15", "by", "escopeta", "shotgun"]
+    },
+    {
+      "id": "type63",
+      "name": {
+        "pt": "Type 63",
+        "en": "Type 63"
+      },
+      "category": {
+        "pt": "Atirador",
+        "en": "Marksman"
+      },
+      "code": {
+        "pt": "1C2B4A7E9F",
+        "en": "1C2B4A7E9F"
+      },
+      "image": {
+        "pt": "type63_pt.jpg",
+        "en": "type63_en.jpg"
+      },
+      "keywords": ["type63", "type 63", "atirador", "marksman"]
     }
   ],
   "categories": {
     "pt": [
-      "Sniper"
+      "Franco-atirador",
+      "SMT", 
+      "Assalto",
+      "Escopeta",
+      "Atirador",
+      "ML"
     ],
     "en": [
-      "Sniper"
+      "Sniper",
+      "SMG",
+      "Assault", 
+      "Shotgun",
+      "Marksman",
+      "LMG"
     ]
   }
 }
