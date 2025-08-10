@@ -2,12 +2,97 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState, useEffect } from 'react';
 import LanguageSelector from './components/LanguageSelector';
 import WeaponArsenal from './components/WeaponArsenal';
+import UnlockManager from './components/UnlockManager';
 import { cn } from "./lib/utils";
 import { Button, buttonVariants } from "./components/ui/button";
-import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings, Crosshair } from 'lucide-react';
+import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings, Crosshair, Book } from 'lucide-react';
 import livepixQR from './assets/livepxx.png'
 import tiktokIcon from './assets/tiktok-icon.png'
 import discordIcon from './assets/discord-icon.jpg'
+
+// Estilos CSS personalizados
+const customStyles = `
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .card-shadow:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .nav-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .nav-button:active {
+    transform: translateY(0);
+  }
+  
+  .social-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .social-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .page-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .page-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+// Adicionar estilos ao head
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement("style");
+  styleSheet.innerText = customStyles;
+  document.head.appendChild(styleSheet);
+}
 import setup1 from './assets/setup1.jpg'
 import setup2 from './assets/setup2.jpg'
 import precision1 from './assets/precision1.jpg'
@@ -19,6 +104,14 @@ import precision6 from './assets/precision6.jpg'
 import precision7 from './assets/precision7.jpg'
 import precision8 from './assets/precision8.jpg'
 import precision9 from './assets/precision9.jpg'
+import precision10 from './assets/1000004347.jpg'
+import precision11 from './assets/1000004348.jpg'
+import precision12 from './assets/1000004349.jpg'
+import precision13 from './assets/1000004356.jpg'
+import precision14 from './assets/1000004357.jpg'
+import precision15 from './assets/1000004370.jpg'
+import precision16 from './assets/1000004371.jpg'
+import precision17 from './assets/1000004373.jpg'
 import './App.css'
 
 // Dados de tradução
@@ -65,15 +158,17 @@ const translations = {
     tiktokSubSubtitle: "TikTok live inscrições",
     youtubeAgricultureSubtitle: "Meu trabalho e desenvolvimento pessoal",
     exclusiveConfigurations: "Configurações Exclusivas",
-    followToUnlockConfigs: "Siga no Instagram para desbloquear minhas configurações exclusivas do Call of Duty Mobile!\n𝙉𝙊𝙏𝘼: 𝙎𝙚 𝙚𝙨𝙩𝙞𝙫𝙚𝙧 𝙪𝙨𝙖𝙣𝙙𝙤 𝙤 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙦𝙪𝙚 𝙚𝙢 𝘼𝙗𝙧𝙞𝙧 𝙣𝙤 𝙉𝙖𝙫𝙚𝙜𝙖𝙙𝙤𝙧",
+    followToUnlockConfigs: "",
     myConfigurations: "Minhas Configurações",
     configTikTok: "no TikTok",
     configYouTube: "no YouTube",
     exclusiveTutorials: "Tutoriais Exclusivos",
-    followToUnlockTutorials: "Siga no Instagram para desbloquear minhas configurações exclusivas do Call of Duty Mobile!\n𝙉𝙊𝙏𝘼: 𝙎𝙚 𝙚𝙨𝙩𝙞𝙫𝙚𝙧 𝙪𝙨𝙖𝙣𝙙𝙤 𝙤 𝙏𝙞𝙠𝙏𝙤𝙠, 𝙘𝙡𝙞𝙦𝙪𝙚 𝙚𝙢 𝘼𝙗𝙧𝙞𝙧 𝙣𝙤 𝙉𝙖𝙫𝙚𝙜𝙖𝙙𝙤𝙧",
+    followToUnlockTutorials: "",
     myTutorials: "Meus Tutoriais",
     tutorialTikTok: "no TikTok",
     tutorialYouTube: "no YouTube",
+    tutorialPageDescription: "Conteúdo exclusivo para melhorar sua gameplay",
+    configPageDescription: "Configurações profissionais para dominar o jogo",
     myGamingSetup: "Meu Setup Gamer",
     aboutMeText: "Mas enfim, quem é esse cara?",
     aboutMeContent: `Uma breve descrição do que você pode gostar de saber sobre este nictófilo:
@@ -161,6 +256,8 @@ Alguns textos ou diários abaixo, para quem quiser entender tudo melhor`
     myTutorials: "My Tutorials",
     tutorialTikTok: "on TikTok",
     tutorialYouTube: "on YouTube",
+    tutorialPageDescription: "Exclusive content to improve your gameplay",
+    configPageDescription: "Professional settings to dominate the game",
     myGamingSetup: "My Gaming Setup",
     aboutMeText: "But anyway, who is this guy?",
     aboutMeContent: `A brief description of what you might like to know about this nyctophile:
@@ -204,39 +301,50 @@ Some texts or diaries below, for those who want to understand everything better`
 }
 
 function App() {
-  const [language, setLanguage] = useState(null);
-  const [currentPage, setCurrentPage] = useState("home");
-  const [showLanguageSelection, setShowLanguageSelection] = useState(true);
+  const [language, setLanguage] = useState(() => {
+    // Se é página arsenal-exclusivo, definir português imediatamente
+    return window.location.pathname === '/arsenal-exclusivo' ? 'pt' : null;
+  });
+  
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Se é página arsenal-exclusivo, definir arsenal imediatamente
+    return window.location.pathname === '/arsenal-exclusivo' ? 'arsenal' : 'home';
+  });
+  
+  const [showLanguageSelection, setShowLanguageSelection] = useState(() => {
+    // Se é página arsenal-exclusivo, não mostrar seleção de idioma
+    return window.location.pathname !== '/arsenal-exclusivo';
+  });
 
-  // Verificar se há rota direta para arsenal na URL
+  // Verificar se há rota direta para arsenal-exclusivo na URL
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === '/arsenal') {
+    if (path === '/arsenal-exclusivo') {
       setCurrentPage('arsenal');
-      // Se não há idioma selecionado, usar português como padrão para acesso direto
-      if (!language) {
-        setLanguage('pt');
-        setShowLanguageSelection(false);
-      }
+      setLanguage('pt');
+      setShowLanguageSelection(false);
     }
-  }, [language]);
+  }, []);
 
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
     setShowLanguageSelection(false);
   };
 
-  if (showLanguageSelection && window.location.pathname !== '/arsenal') {
+  // Se ainda está mostrando seleção de idioma e não é página arsenal
+  if (showLanguageSelection && window.location.pathname !== '/arsenal-exclusivo') {
     return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
   }
 
-  // Se acessou diretamente /arsenal e não tem idioma, usar português
-  if (!language && window.location.pathname === '/arsenal') {
-    setLanguage('pt');
-    setShowLanguageSelection(false);
+  // Se não tem idioma definido ainda (só para páginas normais)
+  if (!language && window.location.pathname !== '/arsenal-exclusivo') {
+    return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
   }
 
-  const t = translations[language]
+  // Garantir que temos um idioma definido
+  const currentLanguage = language || 'pt';
+
+  const t = translations[currentLanguage]
 
   // Componente Card
   const Card = ({ children, className = "" }) => (
@@ -267,7 +375,7 @@ function App() {
       <Button
         onClick={handleClick}
         variant={currentPage === page ? "default" : "outline"}
-        className={`flex items-center gap-2 ${currentPage === page ? "" : "nav-button-outline"}`}
+        className={`flex items-center gap-2 nav-button ${currentPage === page ? "" : "nav-button-outline"}`}
       >
         <Icon className="h-4 w-4" />
         {children}
@@ -432,7 +540,7 @@ function App() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[precision1, precision2, precision3, precision4, precision5, precision6, precision7, precision8, precision9].map((img, index) => (
+          {[precision1, precision2, precision3, precision4, precision5, precision6, precision7, precision8, precision9, precision10, precision11, precision12, precision13, precision14, precision15, precision16, precision17].map((img, index) => (
             <Card key={index} className="card-shadow overflow-hidden">
               <img 
                 src={img} 
@@ -456,13 +564,13 @@ function App() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-12 w-12 mx-auto text-red-500" />
             <h3 className="text-xl font-bold">YouTube SLX</h3>
             <p className="text-sm text-muted-foreground">{t.youtubeSubtitle}</p>
             <Button 
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
+              className="w-full bg-red-600 hover:bg-red-700 text-white social-button"
               onClick={() => window.open('https://www.youtube.com/@SLXCODM', '_blank')}
             >
               {language === 'pt' ? 'Inscrever-se' : 'Subscribe'}
@@ -470,13 +578,13 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-12 w-12 mx-auto text-green-500" />
             <h3 className="text-xl font-bold">YouTube Agricultura SLNX</h3>
             <p className="text-sm text-muted-foreground">{t.youtubeAgricultureSubtitle}</p>
             <Button 
-              className="w-full bg-green-600 hover:bg-green-700 text-white"
+              className="w-full bg-green-600 hover:bg-green-700 text-white social-button"
               onClick={() => window.open('https://www.youtube.com/@SLNXofc', '_blank')}
             >
               {language === 'pt' ? 'Inscrever-se' : 'Subscribe'}
@@ -484,13 +592,13 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Instagram className="h-12 w-12 mx-auto text-pink-500" />
             <h3 className="text-xl font-bold">Instagram</h3>
             <p className="text-sm text-muted-foreground">{t.instagramSubtitle}</p>
             <Button 
-              className="w-full bg-pink-600 hover:bg-pink-700 text-white"
+              className="w-full bg-pink-600 hover:bg-pink-700 text-white social-button"
               onClick={() => window.open('https://www.instagram.com/slx.wav', '_blank')}
             >
               {language === 'pt' ? 'Seguir' : 'Follow'}
@@ -498,8 +606,8 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok" 
@@ -509,7 +617,7 @@ function App() {
             <h3 className="text-xl font-bold">TikTok</h3>
             <p className="text-sm text-muted-foreground">{t.tiktokSubtitle}</p>
             <Button 
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white social-button"
               onClick={() => window.open('https://www.tiktok.com/@slxcodm_', '_blank')}
             >
               {language === 'pt' ? 'Seguir' : 'Follow'}
@@ -517,8 +625,8 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok Sub" 
@@ -528,7 +636,7 @@ function App() {
             <h3 className="text-xl font-bold">TikTok Sub</h3>
             <p className="text-sm text-muted-foreground">{t.tiktokSubSubtitle}</p>
             <Button 
-              className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+              className="w-full bg-teal-600 hover:bg-teal-700 text-white social-button"
               onClick={() => window.open('https://vm.tiktok.com/ZMSs91c6U/', '_blank')}
             >
               {language === 'pt' ? 'Inscrever' : 'Subscribe'}
@@ -536,8 +644,8 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={discordIcon} 
               alt="Discord" 
@@ -546,7 +654,7 @@ function App() {
             <h3 className="text-xl font-bold">Discord</h3>
             <p className="text-sm text-muted-foreground">{language === 'pt' ? 'Servidor da comunidade' : 'Community Server'}</p>
             <Button 
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white social-button"
               onClick={() => window.open('https://discord.com/invite/RyMuC8wwCt', '_blank')}
             >
               {language === 'pt' ? 'Entrar' : 'Join'}
@@ -560,18 +668,21 @@ function App() {
   // Página de Tutoriais
    const TutorialsPage = () => (
     <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold gradient-text">
-          {t.exclusiveTutorials}
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {t.followToUnlockTutorials}
+      <div className="text-center space-y-6">
+        <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
+          <Book className="h-10 w-10 md:h-12 md:w-12 text-orange-600 page-icon" />
+          <h2 className="text-3xl font-bold gradient-text">
+            {t.exclusiveTutorials}
+          </h2>
+        </div>
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          {t.tutorialPageDescription}
         </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok" 
@@ -581,22 +692,22 @@ function App() {
             <h3 className="text-xl font-bold">{t.myTutorials}</h3>
             <p className="text-lg text-primary font-semibold">{t.tutorialTikTok}</p>
             <Button 
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/TnAsP', '_blank')}
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white social-button"
+              onClick={() => window.open('https://www.tiktok.com/@slxcodm_/collection/Dicas e tutoriais-7505787344423766790?is_from_webapp=1&sender_device=pc', '_blank')}
             >
               {language === 'pt' ? 'Acessar Tutoriais' : 'Access Tutorials'}
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-16 w-16 mx-auto text-red-500" />
             <h3 className="text-xl font-bold">{t.myTutorials}</h3>
             <p className="text-lg text-primary font-semibold">{t.tutorialYouTube}</p>
             <Button 
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/jnf7Q', '_blank')}
+              className="w-full bg-red-600 hover:bg-red-700 text-white social-button"
+              onClick={() => window.open('https://youtube.com/playlist?list=PLNjPit_9myAFBhDzh635QGPgzukbXRYLg&si=USW67NX2QODG00eh', '_blank')}
             >
               {language === 'pt' ? 'Acessar Tutoriais' : 'Access Tutorials'}
             </Button>
@@ -609,18 +720,21 @@ function App() {
   // Página de Configurações
  const ConfigurationsPage = () => (
     <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold gradient-text">
-          {t.exclusiveConfigurations}
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {t.followToUnlockConfigs}
+      <div className="text-center space-y-6">
+        <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
+          <Settings className="h-10 w-10 md:h-12 md:w-12 text-orange-600 page-icon" />
+          <h2 className="text-3xl font-bold gradient-text">
+            {t.exclusiveConfigurations}
+          </h2>
+        </div>
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          {t.configPageDescription}
         </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <img 
               src={tiktokIcon} 
               alt="TikTok" 
@@ -630,22 +744,22 @@ function App() {
             <h3 className="text-xl font-bold">{t.myConfigurations}</h3>
             <p className="text-lg text-primary font-semibold">{t.configTikTok}</p>
             <Button 
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/Zy3oC', '_blank')}
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white social-button"
+              onClick={() => window.open('https://www.tiktok.com/@slxcodm_/collection/Configs, loadouts, sensi etc-7510645794769668869?is_from_webapp=1&sender_device=pc', '_blank')}
             >
               {language === 'pt' ? 'Acessar Configurações' : 'Access Configurations'}
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="card-shadow hover-lift">
-          <CardContent className="text-center space-y-4">
+        <Card className="content-card social-button">
+          <CardContent className="text-center space-y-4 p-6">
             <Youtube className="h-16 w-16 mx-auto text-red-500" />
             <h3 className="text-xl font-bold">{t.myConfigurations}</h3>
             <p className="text-lg text-primary font-semibold">{t.configYouTube}</p>
             <Button 
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
-              onClick={() => window.open('https://sub4unlock.io/hBlXP', '_blank')}
+              className="w-full bg-red-600 hover:bg-red-700 text-white social-button"
+              onClick={() => window.open('https://youtube.com/playlist?list=PLNjPit_9myAFwYgp2zNBJs6EzzZ-qs839&si=1nwFMIqFbddx6X0F', '_blank')}
             >
               {language === 'pt' ? 'Acessar Configurações' : 'Access Configurations'}
             </Button>
@@ -724,19 +838,19 @@ function App() {
             <NavButton page="configurations" icon={Settings}>
               {t.navigation.configurations}
             </NavButton>
-            <NavButton page="arsenal" icon={Crosshair} externalLink="https://sub4unlock.io/VjMLD">
+            <NavButton page="arsenal" icon={Crosshair}>
               {t.navigation.arsenal}
             </NavButton>
             <NavButton page="about" icon={Target}>
               {t.navigation.about}
             </NavButton>
             <Button
-              onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
+              onClick={() => setLanguage(currentLanguage === 'pt' ? 'en' : 'pt')}
               variant="ghost"
               className="flex items-center gap-2"
             >
               <Globe className="h-4 w-4" />
-              {language === 'pt' ? '🇺🇸' : '🇧🇷'}
+              {currentLanguage === 'pt' ? '🇺🇸' : '🇧🇷'}
             </Button>
           </div>
         </div>
@@ -746,16 +860,28 @@ function App() {
       <main className="container mx-auto px-4 py-8">
         {currentPage === 'home' && <HomePage />}
         {currentPage === 'social' && <SocialPage />}
-        {currentPage === 'configurations' && <ConfigurationsPage />}
-        {currentPage === 'tutorials' && <TutorialsPage />}
-        {currentPage === 'arsenal' && <WeaponArsenal language={language} />}
+        {currentPage === 'configurations' && (
+          <UnlockManager contentName="Configurações Exclusivas" language={currentLanguage}>
+            <ConfigurationsPage />
+          </UnlockManager>
+        )}
+        {currentPage === 'tutorials' && (
+          <UnlockManager contentName="Tutoriais Exclusivos" language={currentLanguage}>
+            <TutorialsPage />
+          </UnlockManager>
+        )}
+        {currentPage === 'arsenal' && (
+          <UnlockManager contentName="Arsenal Exclusivo" language={currentLanguage}>
+            <WeaponArsenal language={currentLanguage} />
+          </UnlockManager>
+        )}
         {currentPage === 'about' && <AboutPage />}
       </main>
 
       {/* Footer */}
       <footer className="border-t border-border mt-16">
         <div className="container mx-auto px-4 py-8 text-center text-muted-foreground">
-          <p>© 2025 SLX Gaming. {language === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}</p>
+          <p>© 2025 SLX Gaming. {currentLanguage === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}</p>
         </div>
       </footer>
     </div>
