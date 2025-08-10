@@ -2,7 +2,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState, useEffect } from 'react';
 import LanguageSelector from './components/LanguageSelector';
 import WeaponArsenal from './components/WeaponArsenal';
-import UnlockManager from './components/UnlockManager';
 import { cn } from "./lib/utils";
 import { Button, buttonVariants } from "./components/ui/button";
 import { Globe, Youtube, Instagram, Music, Heart, Gift, BookOpen, Gamepad2, Target, Zap, MessageCircle, Video, Settings, Crosshair } from 'lucide-react';
@@ -205,50 +204,39 @@ Some texts or diaries below, for those who want to understand everything better`
 }
 
 function App() {
-  const [language, setLanguage] = useState(() => {
-    // Se é página arsenal-exclusivo, definir português imediatamente
-    return window.location.pathname === '/arsenal-exclusivo' ? 'pt' : null;
-  });
-  
-  const [currentPage, setCurrentPage] = useState(() => {
-    // Se é página arsenal-exclusivo, definir arsenal imediatamente
-    return window.location.pathname === '/arsenal-exclusivo' ? 'arsenal' : 'home';
-  });
-  
-  const [showLanguageSelection, setShowLanguageSelection] = useState(() => {
-    // Se é página arsenal-exclusivo, não mostrar seleção de idioma
-    return window.location.pathname !== '/arsenal-exclusivo';
-  });
+  const [language, setLanguage] = useState(null);
+  const [currentPage, setCurrentPage] = useState("home");
+  const [showLanguageSelection, setShowLanguageSelection] = useState(true);
 
-  // Verificar se há rota direta para arsenal-exclusivo na URL
+  // Verificar se há rota direta para arsenal na URL
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === '/arsenal-exclusivo') {
+    if (path === '/arsenal') {
       setCurrentPage('arsenal');
-      setLanguage('pt');
-      setShowLanguageSelection(false);
+      // Se não há idioma selecionado, usar português como padrão para acesso direto
+      if (!language) {
+        setLanguage('pt');
+        setShowLanguageSelection(false);
+      }
     }
-  }, []);
+  }, [language]);
 
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
     setShowLanguageSelection(false);
   };
 
-  // Se ainda está mostrando seleção de idioma e não é página arsenal
-  if (showLanguageSelection && window.location.pathname !== '/arsenal-exclusivo') {
+  if (showLanguageSelection && window.location.pathname !== '/arsenal') {
     return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
   }
 
-  // Se não tem idioma definido ainda (só para páginas normais)
-  if (!language && window.location.pathname !== '/arsenal-exclusivo') {
-    return <LanguageSelector onSelectLanguage={handleLanguageSelect} />;
+  // Se acessou diretamente /arsenal e não tem idioma, usar português
+  if (!language && window.location.pathname === '/arsenal') {
+    setLanguage('pt');
+    setShowLanguageSelection(false);
   }
 
-  // Garantir que temos um idioma definido
-  const currentLanguage = language || 'pt';
-
-  const t = translations[currentLanguage]
+  const t = translations[language]
 
   // Componente Card
   const Card = ({ children, className = "" }) => (
@@ -351,45 +339,6 @@ function App() {
           </CardContent>
         </Card>
       )}
-
-      {/* Seção COMECE POR AQUI - Tutorial de Precisão */}
-      <Card className="card-shadow border-2 border-primary">
-        <CardContent className="text-center space-y-6 p-8">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold text-primary">
-              🎯 {language === 'pt' ? 'COMECE POR AQUI!' : 'START HERE!'}
-            </h2>
-            <p className="text-lg font-semibold text-muted-foreground">
-              {language === 'pt' 
-                ? 'Tutorial de Precisão Completo - O mais importante de todos!' 
-                : 'Complete Precision Tutorial - The most important of all!'}
-            </p>
-          </div>
-          
-          <div className="bg-muted/50 rounded-lg p-6 space-y-4">
-            <Target className="h-16 w-16 mx-auto text-primary" />
-            <p className="text-sm text-muted-foreground">
-              {language === 'pt' 
-                ? 'Este é o tutorial que mais recomendo! Aprenda as técnicas fundamentais para ter precisão máxima no Call of Duty Mobile.' 
-                : 'This is the tutorial I recommend the most! Learn the fundamental techniques for maximum precision in Call of Duty Mobile.'}
-            </p>
-          </div>
-
-          <Button 
-            className="w-full max-w-md mx-auto min-h-[60px] text-lg font-bold bg-red-600 hover:bg-red-700 text-white button-animation"
-            onClick={() => window.open('https://youtu.be/faZSOgWxPjI?si=Gj_GgrDFn4gwpgFf', '_blank')}
-          >
-            <Youtube className="h-6 w-6 mr-2" />
-            {language === 'pt' ? '▶️ Assistir no YouTube' : '▶️ Watch on YouTube'}
-          </Button>
-
-          <div className="text-xs text-muted-foreground italic">
-            {language === 'pt' 
-              ? '💡 Dica: Este vídeo vai transformar sua gameplay!' 
-              : '💡 Tip: This video will transform your gameplay!'}
-          </div>
-        </CardContent>
-      </Card>
 
       {/* LIVEPIX */}
       {language === 'pt' && (
@@ -775,19 +724,19 @@ function App() {
             <NavButton page="configurations" icon={Settings}>
               {t.navigation.configurations}
             </NavButton>
-            <NavButton page="arsenal" icon={Crosshair}>
+            <NavButton page="arsenal" icon={Crosshair} externalLink="https://sub4unlock.io/VjMLD">
               {t.navigation.arsenal}
             </NavButton>
             <NavButton page="about" icon={Target}>
               {t.navigation.about}
             </NavButton>
             <Button
-              onClick={() => setLanguage(currentLanguage === 'pt' ? 'en' : 'pt')}
+              onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
               variant="ghost"
               className="flex items-center gap-2"
             >
               <Globe className="h-4 w-4" />
-              {currentLanguage === 'pt' ? '🇺🇸' : '🇧🇷'}
+              {language === 'pt' ? '🇺🇸' : '🇧🇷'}
             </Button>
           </div>
         </div>
@@ -797,28 +746,16 @@ function App() {
       <main className="container mx-auto px-4 py-8">
         {currentPage === 'home' && <HomePage />}
         {currentPage === 'social' && <SocialPage />}
-        {currentPage === 'configurations' && (
-          <UnlockManager contentName="Configurações Exclusivas" language={currentLanguage}>
-            <ConfigurationsPage />
-          </UnlockManager>
-        )}
-        {currentPage === 'tutorials' && (
-          <UnlockManager contentName="Tutoriais Exclusivos" language={currentLanguage}>
-            <TutorialsPage />
-          </UnlockManager>
-        )}
-        {currentPage === 'arsenal' && (
-          <UnlockManager contentName="Arsenal Exclusivo" language={currentLanguage}>
-            <WeaponArsenal language={currentLanguage} />
-          </UnlockManager>
-        )}
+        {currentPage === 'configurations' && <ConfigurationsPage />}
+        {currentPage === 'tutorials' && <TutorialsPage />}
+        {currentPage === 'arsenal' && <WeaponArsenal language={language} />}
         {currentPage === 'about' && <AboutPage />}
       </main>
 
       {/* Footer */}
       <footer className="border-t border-border mt-16">
         <div className="container mx-auto px-4 py-8 text-center text-muted-foreground">
-          <p>© 2025 SLX Gaming. {currentLanguage === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}</p>
+          <p>© 2025 SLX Gaming. {language === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}</p>
         </div>
       </footer>
     </div>
