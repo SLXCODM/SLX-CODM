@@ -491,6 +491,32 @@ function App() {
         </Card>
       )}
 
+      {/* Vakinha do H7 - Conserto da Moto */}
+      {language === 'pt' && (
+        <Card className="card-shadow border-l-4 border-l-red-500">
+          <CardContent className="text-center space-y-4 p-6">
+            <div>
+              <h3 className="text-xl font-bold mb-2">Ajude o H7</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Estou ajudando meu amigo H7 a consertar sua moto apos um acidente grave. O motor trincou e os amortecedores quebraram. Ele esta passando por um momento dificil e precisa de nossa ajuda!
+              </p>
+              <p className="text-xs text-gray-500 mb-3">
+                <strong>Meta:</strong> R$ 4.000,00 para o conserto
+              </p>
+            </div>
+            <Button 
+              className="w-full max-w-md mx-auto bg-red-600 hover:bg-red-700 text-white"
+              onClick={() => window.open('https://www.vakinha.com.br/5791600', '_blank')}
+            >
+              Ajudar o H7 - Vakinha
+            </Button>
+            <p className="text-xs text-muted-foreground italic">
+              Clique para ver a historia completa e contribuir via Pix ou cartao
+            </p>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Vakinha Dream */}
       {language === 'pt' && (
         <Card className="card-shadow">
@@ -517,32 +543,6 @@ function App() {
             </Button>
             <p className="text-xs text-muted-foreground italic">
               {t.livepixVakinhaSubtitle}
-            </p>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Vakinha do H7 - Conserto da Moto */}
-      {language === 'pt' && (
-        <Card className="card-shadow border-l-4 border-l-red-500">
-          <CardContent className="text-center space-y-4 p-6">
-            <div>
-              <h3 className="text-xl font-bold mb-2">Ajude o H7</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                Estou ajudando meu amigo H7 a consertar sua moto apos um acidente grave. O motor trincou e os amortecedores quebraram. Ele esta passando por um momento dificil e precisa de nossa ajuda!
-              </p>
-              <p className="text-xs text-gray-500 mb-3">
-                <strong>Meta:</strong> R$ 1.900,00 para o conserto
-              </p>
-            </div>
-            <Button 
-              className="w-full max-w-md mx-auto bg-red-600 hover:bg-red-700 text-white"
-              onClick={() => window.open('https://www.vakinha.com.br/5791600', '_blank')}
-            >
-              Ajudar o H7 - Vakinha
-            </Button>
-            <p className="text-xs text-muted-foreground italic">
-              Clique para ver a historia completa e contribuir via Pix ou cartao
             </p>
           </CardContent>
         </Card>
