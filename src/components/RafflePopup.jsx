@@ -46,7 +46,7 @@ const RafflePopup = ({ onClose, language = 'pt' }) => {
       callToAction: "JOIN THE RAFFLE",
       ctaSubtext: "Starting from $1.00 per number",
       button: "PARTICIPATE NOW",
-      footer: "
+      footer: ""
     }
   };
 
