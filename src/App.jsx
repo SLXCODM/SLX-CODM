@@ -1,6 +1,7 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState, useEffect } from 'react';
 import LanguageSelector from './components/LanguageSelector';
+import RafflePopup from './components/RafflePopup';
 import WeaponArsenal from './components/WeaponArsenal';
 import UnlockManager from './components/UnlockManager';
 import { cn } from "./lib/utils";
@@ -316,6 +317,8 @@ function App() {
     return window.location.pathname !== '/arsenal-exclusivo';
   });
 
+  const [showRafflePopup, setShowRafflePopup] = useState(false);
+
   // Verificar se há rota direta para arsenal-exclusivo na URL
   useEffect(() => {
     const path = window.location.pathname;
@@ -329,6 +332,10 @@ function App() {
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
     setShowLanguageSelection(false);
+    // Mostrar pop-up apenas para português
+    if (lang === 'pt') {
+      setShowRafflePopup(true);
+    }
   };
 
   // Se ainda está mostrando seleção de idioma e não é página arsenal
@@ -884,6 +891,14 @@ function App() {
           <p>© 2025 SLX Gaming. {currentLanguage === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}</p>
         </div>
       </footer>
+
+      {/* Raffle Popup */}
+      {showRafflePopup && (
+        <RafflePopup 
+          onClose={() => setShowRafflePopup(false)}
+          language={currentLanguage}
+        />
+      )}
     </div>
   )
 }
