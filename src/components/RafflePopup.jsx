@@ -14,39 +14,39 @@ const RafflePopup = ({ onClose, language = 'pt' }) => {
   const content = {
     pt: {
       title: "🎮 SORTEIO INSANO 🎮",
-      subtitle: "ASUS ROG PHONE 8 + Cooler RedMagic 4 Pro",
+      subtitle: "ASUS ROG PHONE 8 + Cooler Nubia 4 Pro",
       description: "Estou sorteando o melhor smartphone gaming do mercado!",
       specs: [
         "✨ Snapdragon 8 Gen 3",
         "✨ 12GB RAM | 256GB Storage",
         "✨ Display 165Hz AMOLED",
-        "✨ Câmera 50MP com Gimbal 6-Axis",
+        "✨ 120fps liso no CODM",
         "✨ Bateria 5500mAh",
-        "❄️ Cooler Magnético RedMagic 4 Pro"
+        "❄️ Cooler Magnético Nubia 4 Pro"
       ],
-      priceInfo: "Valor de mercado: R$ 6.000+",
+      priceInfo: "",
       callToAction: "PARTICIPA DA RIFA",
       ctaSubtext: "A partir de R$ 1,00 por número",
       button: "PARTICIPAR AGORA",
-      footer: "Sorteio válido apenas para o Brasil"
+      footer: ""
     },
     en: {
       title: "🎮 INSANE RAFFLE 🎮",
-      subtitle: "ASUS ROG PHONE 8 + Nubia RedMagic 4 Pro Cooler",
+      subtitle: "ASUS ROG PHONE 8 + Nubia 4 Pro Cooler",
       description: "I'm raffling off the best gaming smartphone on the market!",
       specs: [
         "✨ Snapdragon 8 Gen 3",
         "✨ 12GB RAM | 256GB Storage",
         "✨ 165Hz AMOLED Display",
-        "✨ 50MP Camera with 6-Axis Gimbal",
+        "✨ 120fps smooth on CODM",
         "✨ 5500mAh Battery",
-        "❄️ RedMagic 4 Pro Magnetic Cooler"
+        "❄️ Nubia 4 Pro Magnetic Cooler"
       ],
-      priceInfo: "Market value: $6,000+",
+      priceInfo: "",
       callToAction: "JOIN THE RAFFLE",
       ctaSubtext: "Starting from $1.00 per number",
       button: "PARTICIPATE NOW",
-      footer: "Raffle valid for Brazil only"
+      footer: "
     }
   };
 
@@ -114,7 +114,7 @@ const RafflePopup = ({ onClose, language = 'pt' }) => {
 
           {/* Preço */}
           <div className="text-center">
-            <p className="text-gray-300 text-sm">{t.priceInfo}</p>
+            {t.priceInfo && <p className="text-gray-300 text-sm">{t.priceInfo}</p>}
             <p className="text-xl font-bold text-green-400 mt-2">{t.callToAction}</p>
             <p className="text-gray-400 text-sm mt-1">{t.ctaSubtext}</p>
           </div>
@@ -131,9 +131,9 @@ const RafflePopup = ({ onClose, language = 'pt' }) => {
           </button>
 
           {/* Footer */}
-          <p className="text-center text-xs text-gray-400 italic">
+          {t.footer && <p className="text-center text-xs text-gray-400 italic">
             {t.footer}
-          </p>
+          </p>}
         </div>
 
         {/* Efeito de brilho */}
