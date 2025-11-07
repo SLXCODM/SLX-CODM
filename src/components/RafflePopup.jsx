@@ -75,7 +75,7 @@ const RafflePopup = ({ onClose, language = 'pt' }) => {
         {/* Botão Fechar */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 p-2 hover:bg-purple-500/20 rounded-full transition-all duration-200 z-10 hover:scale-110"
+          className="absolute -top-10 right-0 md:top-4 md:right-4 p-2 hover:bg-purple-500/20 rounded-full transition-all duration-200 z-10 hover:scale-110 bg-slate-900/80 md:bg-transparent"
           aria-label="Fechar"
         >
           <X className="w-6 h-6 text-white" />
