@@ -25,7 +25,7 @@ const RafflePopup = ({ onClose, language = 'pt' }) => {
         "❄️ Cooler Magnético Nubia 4 Pro"
       ],
       priceInfo: "",
-      callToAction: "PARTICIPA DA RIFA",
+      callToAction: "PARTICIPE DA RIFA",
       ctaSubtext: "A partir de R$ 1,00 por número",
       button: "PARTICIPAR AGORA",
       footer: ""
